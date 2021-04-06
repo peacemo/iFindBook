@@ -18,33 +18,33 @@ public class BooksHandler {
         return instance;
     }
 
-    public static void handleReadingBooks(Book book, Button btn) {
-        if(book.getStatus() == Constants.READING) {
-            btn.setEnabled(false);
-        }else {
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    DBUtils.getInstance().addToReading(book);
-                    btn.setEnabled(false);
-                }
-            });
-        }
-    }
+//    public static void handleReadingBooks(Book book, Button btn) {
+//        if(book.getStatus() == Constants.READING) {
+//            btn.setEnabled(false);
+//        }else {
+//            btn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    DBUtils.getInstance().addToReading(book);
+//                    btn.setEnabled(false);
+//                }
+//            });
+//        }
+//    }
 
-    public static void handleReadBooks(Book book, Button btn) {
-        if(book.getStatus() == Constants.READ) {
-            btn.setEnabled(false);
-        }else {
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    DBUtils.getInstance().addToRead(book);
-                    btn.setEnabled(false);
-                }
-            });
-        }
-    }
+//    public static void handleReadBooks(Book book, Button btn) {
+//        if(book.getStatus() == Constants.READ) {
+//            btn.setEnabled(false);
+//        }else {
+//            btn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    DBUtils.getInstance().addToRead(book);
+//                    btn.setEnabled(false);
+//                }
+//            });
+//        }
+//    }
 
     //TODO: wishlist 相关
 //    public static void handleWishBooks(Book book, Button btn) {
@@ -61,17 +61,17 @@ public class BooksHandler {
 //        }
 //    }
 
-    public static void handleFavBooks(Book book, Button btn) {
-        if(book.isFav()) {
-            btn.setText("取消最爱");
-        }else {
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    DBUtils.getInstance().changeFavStatus(book);
-                    btn.setText("取消最爱");
-                }
-            });
-        }
-    }
+//    public static void handleFavBooks(Book book, Button btn) {
+//        if(book.isFav()) {
+//            btn.setText("取消最爱");
+//        }else {
+//            btn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    DBUtils.getInstance().changeFavStatus(book);
+//                    btn.setText("取消最爱");
+//                }
+//            });
+//        }
+//    }
 }

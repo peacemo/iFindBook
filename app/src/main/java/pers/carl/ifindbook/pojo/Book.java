@@ -3,28 +3,30 @@ package pers.carl.ifindbook.pojo;
 public class Book {
 
     private int id;
-    private int status; //0.default  1.reading  2.read  3.wishList
+//    private int status; //0.default  1.reading  2.read  3.wishList
     private String name;
     private String author;
-    private String imgURL;
+    private String imgUrl;
     private String shortDesc;
     private String longDesc;
-    private boolean isExpanded; //it is used to handle the expand-or-not status of the CardView in RecyclerView
-    private boolean isFav;
+//    private boolean isExpanded; //it is used to handle the expand-or-not status of the CardView in RecyclerView
+//    private boolean isFav;
 
     public Book() {
     }
-    public Book(int id, String name, String author, String imgURL, String shortDesc, String longDesc, boolean isFav, int status) {
+    public Book(
+            int id,
+            String name, String author, String imgUrl, String shortDesc, String longDesc, boolean isFav, int status) {
         this.id = id;
         this.name = name;
         this.author = author;
-        this.imgURL = imgURL;
+        this.imgUrl = imgUrl;
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
-        this.isFav = isFav;
-        this.status = status;
-
-        this.isExpanded = false;
+//        this.isFav = isFav;
+//        this.status = status;
+//
+//        this.isExpanded = false;
     }
 
     public int getId() {
@@ -51,12 +53,12 @@ public class Book {
         this.author = author;
     }
 
-    public String getImgURL() {
-        return imgURL;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setImgURL(String imgURL) {
-        this.imgURL = imgURL;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public String getShortDesc() {
@@ -75,29 +77,29 @@ public class Book {
         this.longDesc = longDesc;
     }
 
-    public boolean isExpanded() {
-        return isExpanded;
-    }
-
-    public void setExpanded(boolean expanded) {
-        isExpanded = expanded;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public boolean isFav() {
-        return isFav;
-    }
-
-    public void setFav(boolean fav) {
-        isFav = fav;
-    }
+//    public boolean isExpanded() {
+//        return isExpanded;
+//    }
+//
+//    public void setExpanded(boolean expanded) {
+//        isExpanded = expanded;
+//    }
+//
+//    public int getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(int status) {
+//        this.status = status;
+//    }
+//
+//    public boolean isFav() {
+//        return isFav;
+//    }
+//
+//    public void setFav(boolean fav) {
+//        isFav = fav;
+//    }
 
     @Override
     public String toString() {
@@ -105,7 +107,7 @@ public class Book {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
-                ", imgURL='" + imgURL + '\'' +
+                ", imgURL='" + imgUrl + '\'' +
                 ", shortDesc='" + shortDesc + '\'' +
                 ", longDesc='" + longDesc + '\'' +
                 '}';

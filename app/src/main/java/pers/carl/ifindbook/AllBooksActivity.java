@@ -11,9 +11,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.ArrayList;
+import java.util.concurrent.FutureTask;
 
 import pers.carl.ifindbook.adapter.BooksRecViewAdapter;
+import pers.carl.ifindbook.handler.BooksHandlerTest;
+import pers.carl.ifindbook.handler.ResponseBody;
+import pers.carl.ifindbook.handler.SignHandler;
 import pers.carl.ifindbook.pojo.Book;
 import pers.carl.ifindbook.utils.DBUtils;
 
@@ -22,6 +29,7 @@ public class AllBooksActivity extends AppCompatActivity {
     private RecyclerView booksRecView;
     private Button btnBack;
 //    private ArrayList<Book> books = new ArrayList<>();
+    private final ObjectMapper mapper = new ObjectMapper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +62,28 @@ public class AllBooksActivity extends AppCompatActivity {
         if (pageType != -1) {
             switch (pageType) {
                 case Constants.DEFAULT: {
-                    adapter.setBooks(DBUtils.getInstance().getBooks());
-                    break;
+
+                    //TEST
+                    FutureTask<String> allBooksTask = new FutureTask<>(new BooksHandlerTest("books", Constants.ALL_BOOKS));
+                    Thread thread = new Thread(allBooksTask);
+                    thread.start();
+                    try{
+                        //get获取线程返回值，通过ObjectMapper反序列化为ResponseBody
+//                        ResponseBody body = mapper.readValue(allBooksTask.get(),ResponseBody.class);
+                        ArrayList<Book> booksTemp = (ArrayList<Book>) mapper.readValue(allBooksTask.get(), ArrayList.class);
+
+                        ArrayList<Book> books = mapper.convertValue(booksTemp, new TypeReference<ArrayList<Book>>() {});
+//                        adapter.setBooks(DBUtils.getInstance().getBooks());
+                        adapter.setBooks(books);
+                        break;
+                        //根据返回码确定提示信息
+//                        Toast.makeText(getApplicationContext(),body.getResponseCode() == 200 ? "登录成功" : "登录失败",Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        break;
+                    }
+
+
                 }
                 case Constants.READING: {
                     ArrayList<Book> b = DBUtils.getInstance().getBooksReading();

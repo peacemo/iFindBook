@@ -50,24 +50,24 @@ public class BooksRecViewAdapter extends RecyclerView.Adapter<BooksRecViewAdapte
 
         Glide.with(mcontext)
                 .asBitmap()
-                .load(books.get(position).getImgURL())
+                .load(books.get(position).getImgUrl())
                 .into(holder.imgBook);
 
-        holder.imgBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Snackbar.make(holder.parent, books.get(position).getId() + " clicked. ", Snackbar.LENGTH_SHORT)
-//                        .show();
-                if (books.get(position).isExpanded()) {
-                    holder.longDesc.setVisibility(View.GONE);
-                    books.get(position).setExpanded(false);
-                } else {
-                    holder.longDesc.setVisibility(View.VISIBLE);
-                    books.get(position).setExpanded(true);
-                }
-
-            }
-        });
+//        holder.imgBook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Snackbar.make(holder.parent, books.get(position).getId() + " clicked. ", Snackbar.LENGTH_SHORT)
+////                        .show();
+//                if (books.get(position).isExpanded()) {
+//                    holder.longDesc.setVisibility(View.GONE);
+//                    books.get(position).setExpanded(false);
+//                } else {
+//                    holder.longDesc.setVisibility(View.VISIBLE);
+//                    books.get(position).setExpanded(true);
+//                }
+//
+//            }
+//        });
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override

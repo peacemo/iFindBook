@@ -1,13 +1,8 @@
 package pers.carl.ifindbook;
-import android.util.Log;
 
 import org.junit.Test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -57,4 +52,5 @@ public class ExampleUnitTest {
 //            e.printStackTrace();
 //        };
 //    }
+
 }

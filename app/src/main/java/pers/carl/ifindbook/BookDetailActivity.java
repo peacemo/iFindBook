@@ -44,13 +44,13 @@ public class BookDetailActivity extends AppCompatActivity {
                 Book incomingBook = DBUtils.getBookById(bookId);
                 if(incomingBook != null) {
                     setData(incomingBook);
-                    booksHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
-                    booksHandler.getInstance().handleReadBooks(incomingBook, addToRead);
+//                    booksHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
+//                    booksHandler.getInstance().handleReadBooks(incomingBook, addToRead);
                     //TODO: wishlist 相关
 //                    booksHandler.getInstance().handleWishBooks(incomingBook, addToWishList);
 
                     //TODO: 这里的收藏逻辑有问题，需要修改
-                    booksHandler.getInstance().handleFavBooks(incomingBook, addToFav);
+//                    booksHandler.getInstance().handleFavBooks(incomingBook, addToFav);
                 }
             }
         }
@@ -72,7 +72,7 @@ public class BookDetailActivity extends AppCompatActivity {
         desc.setText(book.getLongDesc());
 
         Glide.with(this)
-                .asBitmap().load(book.getImgURL())
+                .asBitmap().load(book.getImgUrl())
                 .into(bookCover);
 
     }
