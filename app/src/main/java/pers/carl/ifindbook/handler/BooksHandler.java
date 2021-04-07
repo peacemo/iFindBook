@@ -46,32 +46,4 @@ public class BooksHandler {
 //        }
 //    }
 
-    //TODO: wishlist 相关
-//    public static void handleWishBooks(Book book, Button btn) {
-//        if(book.getStatus() == Constants.WISH_LIST) {
-//            btn.setEnabled(false);
-//        }else {
-//            btn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    DBUtils.getInstance().addToWishList(book);
-//                    btn.setEnabled(false);
-//                }
-//            });
-//        }
-//    }
-
-//    public static void handleFavBooks(Book book, Button btn) {
-//        if(book.isFav()) {
-//            btn.setText("取消最爱");
-//        }else {
-//            btn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    DBUtils.getInstance().changeFavStatus(book);
-//                    btn.setText("取消最爱");
-//                }
-//            });
-//        }
-//    }
 }

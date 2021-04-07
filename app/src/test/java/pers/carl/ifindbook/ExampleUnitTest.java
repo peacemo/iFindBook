@@ -1,6 +1,13 @@
 package pers.carl.ifindbook;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.junit.Test;
+
+import java.util.ArrayList;
+
+import pers.carl.ifindbook.pojo.Book;
 
 import static org.junit.Assert.assertEquals;
 
@@ -52,5 +59,18 @@ public class ExampleUnitTest {
 //            e.printStackTrace();
 //        };
 //    }
+
+    @Test
+    public void testObjectmapper() {
+        ArrayList<Book> books = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            String string = objectMapper.writeValueAsString(books);
+            System.out.println(string);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
 
-        //TODO: 取消注释
         btnAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,17 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        //TODO: wishlist 相关
-//        btnWishList.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, AllBooksActivity.class);
-//                intent.putExtra("pageName", MainActivity.activityName);
-//                intent.putExtra("target", Constants.WISH_LIST);
-//                startActivity(intent);
-//            }
-//        });
 
         btnFav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,8 +101,6 @@ public class MainActivity extends AppCompatActivity {
         btnAll = findViewById(R.id.btnAll);
         btnReading = findViewById(R.id.btnReading);
         btnRead = findViewById(R.id.btnAlreadyRead);
-        //TODO: wishlist 相关
-//        btnWishList = findViewById(R.id.btnWishList);
         btnFav = findViewById(R.id.btnFav);
 //        btnAbout = findViewById(R.id.btnAbout);
 

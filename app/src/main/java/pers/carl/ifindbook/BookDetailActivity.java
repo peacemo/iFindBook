@@ -46,8 +46,6 @@ public class BookDetailActivity extends AppCompatActivity {
                     setData(incomingBook);
 //                    booksHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
 //                    booksHandler.getInstance().handleReadBooks(incomingBook, addToRead);
-                    //TODO: wishlist 相关
-//                    booksHandler.getInstance().handleWishBooks(incomingBook, addToWishList);
 
                     //TODO: 这里的收藏逻辑有问题，需要修改
 //                    booksHandler.getInstance().handleFavBooks(incomingBook, addToFav);
