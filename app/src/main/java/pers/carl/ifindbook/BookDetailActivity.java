@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import pers.carl.ifindbook.handler.BooksHandler;
+import pers.carl.ifindbook.handler.BooksStatusHandler;
 import pers.carl.ifindbook.pojo.Book;
 import pers.carl.ifindbook.utils.DBUtils;
 
@@ -35,7 +35,7 @@ public class BookDetailActivity extends AppCompatActivity {
 
         initViews();
 
-        BooksHandler booksHandler = new BooksHandler();
+        BooksStatusHandler booksStatusHandler = new BooksStatusHandler();
 
         Intent intent = getIntent();
         if(intent != null) {
@@ -44,11 +44,11 @@ public class BookDetailActivity extends AppCompatActivity {
                 Book incomingBook = DBUtils.getBookById(bookId);
                 if(incomingBook != null) {
                     setData(incomingBook);
-//                    booksHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
-//                    booksHandler.getInstance().handleReadBooks(incomingBook, addToRead);
+//                    booksStatusHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
+//                    booksStatusHandler.getInstance().handleReadBooks(incomingBook, addToRead);
 
                     //TODO: 这里的收藏逻辑有问题，需要修改
-//                    booksHandler.getInstance().handleFavBooks(incomingBook, addToFav);
+//                    booksStatusHandler.getInstance().handleFavBooks(incomingBook, addToFav);
                 }
             }
         }

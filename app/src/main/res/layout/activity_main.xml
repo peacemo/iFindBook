@@ -65,10 +65,12 @@
 
             <Button
                 android:id="@+id/btnGoSign"
+                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:background="@android:color/transparent"
-                android:text="Please Sign In. >"
+                android:text="@string/please_sign_in"
                 android:textColor="@color/primaryTextColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -118,7 +120,7 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="推  荐"
+            android:text="@string/recommend"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"

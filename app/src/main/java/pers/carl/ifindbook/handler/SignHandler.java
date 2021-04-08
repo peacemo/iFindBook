@@ -57,7 +57,7 @@ public class SignHandler implements Callable<String> {
             return new String(bytes,0,len,StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
-            return "";
+            return "[]";
         }
     }
 

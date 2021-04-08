@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -23,6 +24,18 @@ public class MainActivity extends AppCompatActivity {
     private EditText edtSearch;
     private Button btnGoSign;
     private CardView btnAll, btnReading, btnRead, btnWishList, btnFav, btnAbout;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            try {
+                btnGoSign.setText(data.getExtras().getString("userName"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
@@ -81,9 +94,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SignInActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
+
+
 
     }
 

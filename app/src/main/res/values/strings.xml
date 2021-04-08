@@ -7,4 +7,16 @@
     <string name="favorite">最爱书籍</string>
     <string name="about">关于</string>
     <string name="search">搜索...</string>
+    <string name="please_sign_in"><![CDATA[Please Sign In.  >]]></string>
+    <string name="recommend">推荐</string>
+    <string name="sign_in">登录</string>
+    <string name="havent_sign_up">没有账号？</string>
+    <string name="account">账号</string>
+    <string name="nickname">昵称</string>
+    <string name="password">密码</string>
+    <string name="email">油箱</string>
+    <string name="register">注册</string>
+    <string name="mark_read">标记已读</string>
+    <string name="mark_reading">加入在读</string>
+    <string name="mark_fav">加入最爱</string>
 </resources>
