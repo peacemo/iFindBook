@@ -35,22 +35,29 @@ public class DBUtils {
         if (booksRead == null) {
             booksRead = new ArrayList<>();
         }
-
         if (booksFav == null) {
             booksFav = new ArrayList<>();
+        }
+        if (user == null) {
+            user = new User();
+            user.setId(0);
         }
 
 //        initData();
     }
 
     public void initData() {
+        booksRead.clear();
+        booksReading.clear();
+        booksFav.clear();
         //Add data from database.
         //make sure every set of books comes in a row
-        if (requestBooks("books", "all", booksAll)){
-            if (requestBooks(String.valueOf(user.getId()), "reading", booksReading)) {
-                requestBooks(String.valueOf(user.getId()), "fav", booksFav);
+        if (requestBooks(String.valueOf(user.getId()), "reading", booksReading)) {
+            if (requestBooks(String.valueOf(user.getId()), "fav", booksFav)) {
+                requestBooks(String.valueOf(user.getId()), "read", booksRead);
             }
         }
+
         //these are the sample data.
 //        booksAll.add(new Book(11, "Book_I", "Isaka Kotaro", "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3539122593,1620052230&fm=26&gp=0.jpg", "short Desc", "long Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desc", false, Constants.DEFAULT));
 //        booksAll.add(new Book(101, "Book_X", "Isaka Kotaro", "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3780195714,2877537196&fm=26&gp=0.jpg", "short Desc", "long Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desc", false, Constants.DEFAULT));
@@ -72,6 +79,10 @@ public class DBUtils {
             }
             case "fav": {
                 url = Constants.FAV_BOOKS;
+                break;
+            }
+            case "read": {
+                url = Constants.READ_BOOKS;
                 break;
             }
             default: {
@@ -109,7 +120,9 @@ public class DBUtils {
         return instance;
     }
 
-    public static ArrayList<Book> getBooksAll() {
+    public  ArrayList<Book> getBooksAll() {
+        booksAll.clear();
+        requestBooks("books", "all", booksAll);
         return booksAll;
     }
 
@@ -159,17 +172,15 @@ public class DBUtils {
      * @return
      */
 
-//    public static boolean addToReading(Book b) {
-//        b.setStatus(Constants.READING);
-//        if(tagBooks()) {
-//            Log.v("log: ", "added to Reading." +
-//                    "\n------" +
-//                    booksReading.get(booksReading.size() -1).toString());
-//            //TODO: update record to database
-//            return true;
-//        }
-//        return false;
-//    }
+    public static boolean addToReading(Book b) {
+        try {
+            booksReading.add(b);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 //    public static boolean addToRead(Book b) {
 //        b.setStatus(Constants.READ);
@@ -181,19 +192,14 @@ public class DBUtils {
 //        return false;
 //    }
 
-//    public static boolean changeFavStatus(Book b) {
-//        if(b.isFav()) {
-//            b.setFav(false);
-//        }else {
-//            b.setFav(true);
-//        }
-//
-//        if(tagBooks()) {
-//            Log.v("log: ", "added to Fav.");
-//            //TODO: update record to database
-//            return true;
-//        }
-//        return false;
-//    }
+    public static boolean addToFav(Book b) {
+        try {
+            booksFav.add(b);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 }

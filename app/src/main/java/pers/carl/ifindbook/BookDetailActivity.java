@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import pers.carl.ifindbook.handler.BooksStatusHandler;
+import pers.carl.ifindbook.handler.BtnStatusHandler;
 import pers.carl.ifindbook.pojo.Book;
 import pers.carl.ifindbook.utils.DBUtils;
 
@@ -35,7 +35,7 @@ public class BookDetailActivity extends AppCompatActivity {
 
         initViews();
 
-        BooksStatusHandler booksStatusHandler = new BooksStatusHandler();
+        BtnStatusHandler btnStatusHandler = new BtnStatusHandler();
 
         Intent intent = getIntent();
         if(intent != null) {
@@ -44,11 +44,10 @@ public class BookDetailActivity extends AppCompatActivity {
                 Book incomingBook = DBUtils.getBookById(bookId);
                 if(incomingBook != null) {
                     setData(incomingBook);
-                    booksStatusHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
-//                    booksStatusHandler.getInstance().handleReadBooks(incomingBook, addToRead);
+                    btnStatusHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
+//                    btnStatusHandler.getInstance().handleReadBooks(incomingBook, addToRead);
 
-                    //TODO: 这里的收藏逻辑有问题，需要修改
-                    booksStatusHandler.getInstance().handleFavBooks(incomingBook, addToFav);
+                    btnStatusHandler.getInstance().handleFavBooks(incomingBook, addToFav);
                 }
             }
         }
@@ -85,7 +84,6 @@ public class BookDetailActivity extends AppCompatActivity {
         name = findViewById(R.id.txtConName);
         author = findViewById(R.id.txtConAuthor);
         desc = findViewById(R.id.txtConDesc);
-        page = findViewById(R.id.txtConPage);
         btnBack = findViewById(R.id.btnBack);
 
     }

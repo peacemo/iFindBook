@@ -11,5 +11,13 @@ public class ResponseBody {
     public Object getResponseData() {
         return responseData;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseBody{" +
+                "responseCode=" + responseCode +
+                ", responseData=" + responseData +
+                '}';
+    }
 }
 

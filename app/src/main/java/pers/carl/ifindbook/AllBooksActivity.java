@@ -58,6 +58,7 @@ public class AllBooksActivity extends AppCompatActivity {
             switch (pageType) {
                 case Constants.DEFAULT: {
                     ArrayList<Book> b = DBUtils.getInstance().getBooksAll();
+                    Log.e("ALL", DBUtils.getUser().toString());
                     adapter.setBooks(b);
                     break;
                 }

@@ -3,7 +3,7 @@
     <string name="app_name">iFindBook</string>
     <string name="home_page">Home</string>
     <string name="tag_key_translation_z">0</string>
-    <string name="all_books">All Books</string>
+    <string name="all_books">Library</string>
     <string name="read">Already Read</string>
     <string name="reading">Reading</string>
     <string name="favorite">Favorite</string>

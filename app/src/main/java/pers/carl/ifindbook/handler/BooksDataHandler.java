@@ -38,7 +38,9 @@ public class BooksDataHandler implements Callable<String> {
             connection.setDoOutput(true);
             //写数据（也就是发送数据）
             String data = "data=" + URLEncoder.encode(this.data, StandardCharsets.UTF_8.toString())
-                            + "&reqType=" + URLEncoder.encode(this.reqType, StandardCharsets.UTF_8.toString());
+                            + "&reqType=" + URLEncoder.encode(this.reqType, StandardCharsets.UTF_8.toString())
+                            + "&type=" + URLEncoder.encode("select", StandardCharsets.UTF_8.toString())
+                    ;
             connection.getOutputStream().write(data.getBytes(StandardCharsets.UTF_8));
             //TODO: 获取返回数据
             //获取返回的数据
