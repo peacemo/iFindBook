@@ -78,6 +78,8 @@ public class SignInActivity extends AppCompatActivity {
             if (DBUtils.getUser().getId() != 0) {
                 Log.e("SignAct", DBUtils.getUser().toString());
                 Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+                //加载书籍
+                DBUtils.getInstance().initData();
                 Intent intent = new Intent();
                 intent.putExtra("userName", DBUtils.getUser().getNickname());
                 setResult(0, intent);

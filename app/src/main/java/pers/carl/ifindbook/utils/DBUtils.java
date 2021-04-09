@@ -40,13 +40,17 @@ public class DBUtils {
             booksFav = new ArrayList<>();
         }
 
-        initData();
+//        initData();
     }
 
-    private void initData() {
+    public void initData() {
         //Add data from database.
-        requestBooks("books", "all", booksAll);
-
+        //make sure every set of books comes in a row
+        if (requestBooks("books", "all", booksAll)){
+            if (requestBooks(String.valueOf(user.getId()), "reading", booksReading)) {
+                requestBooks(String.valueOf(user.getId()), "fav", booksFav);
+            }
+        }
         //these are the sample data.
 //        booksAll.add(new Book(11, "Book_I", "Isaka Kotaro", "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3539122593,1620052230&fm=26&gp=0.jpg", "short Desc", "long Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desc", false, Constants.DEFAULT));
 //        booksAll.add(new Book(101, "Book_X", "Isaka Kotaro", "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3780195714,2877537196&fm=26&gp=0.jpg", "short Desc", "long Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desc", false, Constants.DEFAULT));
@@ -110,9 +114,8 @@ public class DBUtils {
     }
 
     public ArrayList<Book> getBooksReading() {
-        Log.e("getBooksReaing", String.valueOf(user.getId()));
-        booksReading.clear();
-        requestBooks(String.valueOf(user.getId()), "reading", booksReading);
+//        booksReading.clear();
+
         return booksReading;
     }
 
@@ -121,9 +124,8 @@ public class DBUtils {
     }
 
     public ArrayList<Book> getBooksFav() {
-        Log.e("getBooksReaing", String.valueOf(user.getId()));
-        booksFav.clear();
-        requestBooks(String.valueOf(user.getId()), "fav", booksFav);
+//        booksFav.clear();
+
         return booksFav;
     }
 

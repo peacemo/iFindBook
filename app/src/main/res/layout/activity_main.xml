@@ -68,7 +68,6 @@
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:background="@android:color/transparent"
                 android:text="@string/please_sign_in"
                 android:textColor="@color/primaryTextColor"

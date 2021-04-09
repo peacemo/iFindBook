@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
             try {
-                btnGoSign.setText(data.getExtras().getString("userName"));
+                btnGoSign.setText("Hi, " + data.getExtras().getString("userName"));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -50,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
 
+        setOnclickListener();
+
+
+    }
+
+    private void setOnclickListener() {
         btnAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,9 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
-
-
-
     }
 
 

@@ -48,7 +48,7 @@ public class BookDetailActivity extends AppCompatActivity {
 //                    booksStatusHandler.getInstance().handleReadBooks(incomingBook, addToRead);
 
                     //TODO: 这里的收藏逻辑有问题，需要修改
-//                    booksStatusHandler.getInstance().handleFavBooks(incomingBook, addToFav);
+                    booksStatusHandler.getInstance().handleFavBooks(incomingBook, addToFav);
                 }
             }
         }
@@ -80,7 +80,6 @@ public class BookDetailActivity extends AppCompatActivity {
         bookCover = findViewById(R.id.imgCover);
         addToReading = findViewById(R.id.btnAddToReading);
         addToRead = findViewById(R.id.btnAddToRead);
-//        addToWishList = findViewById(R.id.btnAddToWish);
         addToFav = findViewById(R.id.btnAddToFav);
         addToFav = findViewById(R.id.btnAddToFav);
         name = findViewById(R.id.txtConName);

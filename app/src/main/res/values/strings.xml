@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">iFindBook</string>
+    <string name="home_page">首页</string>
     <string name="tag_key_translation_z">0</string>
     <string name="all_books">全部书籍</string>
     <string name="read">已读书籍</string>
@@ -14,7 +15,7 @@
     <string name="account">账号</string>
     <string name="nickname">昵称</string>
     <string name="password">密码</string>
-    <string name="email">油箱</string>
+    <string name="email">邮箱</string>
     <string name="register">注册</string>
     <string name="mark_read">标记已读</string>
     <string name="mark_reading">加入在读</string>

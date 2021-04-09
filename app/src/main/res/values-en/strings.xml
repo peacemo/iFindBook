@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iFindBook</string>
+    <string name="home_page">Home</string>
+    <string name="tag_key_translation_z">0</string>
+    <string name="all_books">All Books</string>
+    <string name="read">Already Read</string>
+    <string name="reading">Reading</string>
+    <string name="favorite">Favorite</string>
+    <string name="about">About</string>
+    <string name="search">Search...</string>
+    <string name="please_sign_in"><![CDATA[Please Sign In.  >]]></string>
+    <string name="recommend">Recommend</string>
+    <string name="sign_in">Sign In</string>
+    <string name="havent_sign_up">Haven\'t sign up？</string>
+    <string name="account">Account</string>
+    <string name="nickname">Nickname</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="register">Sign Up</string>
+    <string name="mark_read">Read</string>
+    <string name="mark_reading">Reading</string>
+    <string name="mark_fav">Favorite</string>
+</resources>

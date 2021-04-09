@@ -1,5 +1,11 @@
 package pers.carl.ifindbook.handler;
 
+import android.util.Log;
+import android.widget.Button;
+
+import pers.carl.ifindbook.pojo.Book;
+import pers.carl.ifindbook.utils.DBUtils;
+
 public class BooksStatusHandler {
 
     private static BooksStatusHandler instance;
@@ -9,6 +15,14 @@ public class BooksStatusHandler {
             return new BooksStatusHandler();
         }
         return instance;
+    }
+
+    public static void handleFavBooks(Book incomingBook, Button addToFav) {
+        if(DBUtils.getInstance().getBooksFav().contains(incomingBook)) {
+            addToFav.setEnabled(false);
+        }
+        Log.e("status Handler", String.valueOf(DBUtils.getInstance().getBooksFav().contains(incomingBook)));
+
     }
 
 //    public static void handleReadingBooks(Book book, Button btn) {

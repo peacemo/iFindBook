@@ -1,5 +1,9 @@
 package pers.carl.ifindbook.pojo;
 
+import androidx.annotation.Nullable;
+
+import java.util.Objects;
+
 public class Book {
 
     private int id;
@@ -16,7 +20,9 @@ public class Book {
     }
     public Book(
             int id,
-            String name, String author, String imgUrl, String shortDesc, String longDesc, boolean isFav, int status) {
+            String name, String author, String imgUrl, String shortDesc, String longDesc
+//            , boolean isFav, int status
+    ) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -111,5 +117,19 @@ public class Book {
                 ", shortDesc='" + shortDesc + '\'' +
                 ", longDesc='" + longDesc + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null | getClass() != obj.getClass()) {
+            return false;
+        }
+        Book book = (Book) obj;
+
+        //because the id is unique, so the only para we need to confirm is the id.
+        return Objects.equals(id, book.id);
     }
 }
