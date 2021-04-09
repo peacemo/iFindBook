@@ -44,7 +44,7 @@ public class BookDetailActivity extends AppCompatActivity {
                 Book incomingBook = DBUtils.getBookById(bookId);
                 if(incomingBook != null) {
                     setData(incomingBook);
-//                    booksStatusHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
+                    booksStatusHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
 //                    booksStatusHandler.getInstance().handleReadBooks(incomingBook, addToRead);
 
                     //TODO: 这里的收藏逻辑有问题，需要修改

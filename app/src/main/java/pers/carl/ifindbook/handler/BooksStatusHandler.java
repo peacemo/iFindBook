@@ -22,22 +22,13 @@ public class BooksStatusHandler {
             addToFav.setEnabled(false);
         }
         Log.e("status Handler", String.valueOf(DBUtils.getInstance().getBooksFav().contains(incomingBook)));
-
     }
 
-//    public static void handleReadingBooks(Book book, Button btn) {
-//        if(book.getStatus() == Constants.READING) {
-//            btn.setEnabled(false);
-//        }else {
-//            btn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    DBUtils.getInstance().addToReading(book);
-//                    btn.setEnabled(false);
-//                }
-//            });
-//        }
-//    }
+    public static void handleReadingBooks(Book incomingBook, Button addToReading) {
+        if(DBUtils.getInstance().getBooksReading().contains(incomingBook)) {
+            addToReading.setEnabled(false);
+        }
+    }
 
 //    public static void handleReadBooks(Book book, Button btn) {
 //        if(book.getStatus() == Constants.READ) {

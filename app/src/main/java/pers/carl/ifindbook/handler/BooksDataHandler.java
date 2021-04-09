@@ -2,6 +2,9 @@ package pers.carl.ifindbook.handler;
 
 import android.util.Log;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -38,9 +41,20 @@ public class BooksDataHandler implements Callable<String> {
                             + "&reqType=" + URLEncoder.encode(this.reqType, StandardCharsets.UTF_8.toString());
             connection.getOutputStream().write(data.getBytes(StandardCharsets.UTF_8));
             //TODO: 获取返回数据
-            byte [] bytes = new byte[10240];
             //获取返回的数据
-            int len = connection.getInputStream().read(bytes);
+            InputStream in = connection.getInputStream();
+            byte[] buffer = new byte[1024];
+            int read;
+            int len = 0;
+            ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+            while ((read = in.read(buffer)) > 0) {
+                len += read;
+                byteArray.write(buffer, 0, read);
+                byteArray.flush();
+            }
+            byte [] bytes = byteArray.toByteArray();
+
+            connection.disconnect();
             return new String(bytes,0,len,StandardCharsets.UTF_8);
 
         } catch (Exception e) {
