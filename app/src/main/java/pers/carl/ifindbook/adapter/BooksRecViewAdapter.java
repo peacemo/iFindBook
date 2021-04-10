@@ -14,12 +14,14 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 
 import pers.carl.ifindbook.BookDetailActivity;
 import pers.carl.ifindbook.R;
 import pers.carl.ifindbook.pojo.Book;
+import pers.carl.ifindbook.utils.DBUtils;
 
 public class BooksRecViewAdapter extends RecyclerView.Adapter<BooksRecViewAdapter.ViewHolder> {
 
@@ -73,8 +75,20 @@ public class BooksRecViewAdapter extends RecyclerView.Adapter<BooksRecViewAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mcontext, BookDetailActivity.class);
-                intent.putExtra("bookId", books.get(position).getId());
-                mcontext.startActivity(intent);
+
+                if (DBUtils.getUser().getId() != 0) {
+                    intent.putExtra("bookId", books.get(position).getId());
+                    mcontext.startActivity(intent);
+                } else {
+                    try {
+                        ObjectMapper mapper = new ObjectMapper();
+                        String string = mapper.writeValueAsString(books.get(position));
+                        intent.putExtra("objBook", string);
+                        mcontext.startActivity(intent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
 

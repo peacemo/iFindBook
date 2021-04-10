@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -67,6 +68,7 @@ public class SignInActivity extends AppCompatActivity {
 
         String account = edtAccount.getText().toString();
         String pwd = edtPwd.getText().toString();
+
         FutureTask<String> signInTask = new FutureTask<>(new SignHandler(account, pwd, Constants.SIGN_IN));
         Thread thread = new Thread(signInTask);
         thread.start();
@@ -85,6 +87,7 @@ public class SignInActivity extends AppCompatActivity {
                 setResult(0, intent);
                 finish();
             } else {
+                btnSignIn.setEnabled(true);
                 Toast.makeText(this, "登录失败", Toast.LENGTH_SHORT).show();
             }
 

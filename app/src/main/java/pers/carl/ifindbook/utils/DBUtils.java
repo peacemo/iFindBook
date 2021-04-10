@@ -2,6 +2,8 @@ package pers.carl.ifindbook.utils;
 
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -22,6 +24,7 @@ public class DBUtils {
     private static ArrayList<Book> booksReading;
     private static ArrayList<Book> booksRead;
     private static ArrayList<Book> booksFav;
+    private static ArrayList<Book> booksSearch;
 
     private final ObjectMapper mapper = new ObjectMapper();
 
@@ -37,6 +40,8 @@ public class DBUtils {
         }
         if (booksFav == null) {
             booksFav = new ArrayList<>();
+        }if (booksSearch == null) {
+            booksSearch = new ArrayList<>();
         }
         if (user == null) {
             user = new User();
@@ -50,6 +55,7 @@ public class DBUtils {
         booksRead.clear();
         booksReading.clear();
         booksFav.clear();
+
         //Add data from database.
         //make sure every set of books comes in a row
         if (requestBooks(String.valueOf(user.getId()), "reading", booksReading)) {
@@ -64,8 +70,23 @@ public class DBUtils {
     }
 
     /**
-     * request target books from server
-     * @return the status of the processing result
+     *
+     * @param data the part of the sql sent to server,
+     *             it's:
+     *              "books: String" while requesting all books,
+     *              "uid: int" while requesting for a certain kind of books like "reading/read/fav",
+     *              "query: String" while fuzzy search for some books.
+     *
+     * @param reqType the type of the request destination url,
+     *                it's:
+     *                  Constants.READING_BOOKS while equals "reading"
+     *                  Constants.FAV_BOOKS while equals "fav"
+     *                  Constants.READ_BOOKS while equals "read"
+     *                  Constants.SEARCH_BOOKS while equals "search"
+     *                  Constants.ALL_BOOKS while default.
+     *
+     * @param targetList the target ArrayList that receives the result.
+     * @return the ArrayList that the function requests from server.
      */
     private boolean requestBooks(String data, String reqType, ArrayList<Book> targetList) {
 
@@ -83,6 +104,10 @@ public class DBUtils {
             }
             case "read": {
                 url = Constants.READ_BOOKS;
+                break;
+            }
+            case "search": {
+                url = Constants.SEARCH_BOOKS;
                 break;
             }
             default: {
@@ -202,4 +227,9 @@ public class DBUtils {
         }
     }
 
+    public ArrayList<Book> searchBooks(String query) {
+        booksSearch.clear();
+        requestBooks(query, "search", booksSearch);
+        return booksSearch;
+    }
 }

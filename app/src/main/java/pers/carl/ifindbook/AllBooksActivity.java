@@ -41,7 +41,7 @@ public class AllBooksActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int pageType = intent.getIntExtra("target", -1);
-        btnBack.setText(intent.getStringExtra("pageName"));
+
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +73,10 @@ public class AllBooksActivity extends AppCompatActivity {
                 }
                 case Constants.FAV: {
                     adapter.setBooks(DBUtils.getInstance().getBooksFav());
+                    break;
+                }case Constants.SEARCH: {
+                    String query = intent.getStringExtra("query");
+                    adapter.setBooks(DBUtils.getInstance().searchBooks(query));
                     break;
                 }
                 default: {

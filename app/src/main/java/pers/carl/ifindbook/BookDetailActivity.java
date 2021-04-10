@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pers.carl.ifindbook.handler.BtnStatusHandler;
 import pers.carl.ifindbook.pojo.Book;
@@ -39,16 +40,29 @@ public class BookDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if(intent != null) {
-            int bookId = intent.getIntExtra("bookId", -1);
-            if(bookId != -1) {
-                Book incomingBook = DBUtils.getBookById(bookId);
-                if(incomingBook != null) {
-                    setData(incomingBook);
-                    btnStatusHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
+            if (DBUtils.getUser().getId() != 0) {
+                int bookId = intent.getIntExtra("bookId", -1);
+                if (bookId != -1) {
+                    Book incomingBook = DBUtils.getBookById(bookId);
+                    if (incomingBook != null) {
+                        setData(incomingBook);
+                        btnStatusHandler.getInstance().handleReadingBooks(incomingBook, addToReading);
 //                    btnStatusHandler.getInstance().handleReadBooks(incomingBook, addToRead);
 
-                    btnStatusHandler.getInstance().handleFavBooks(incomingBook, addToFav);
+                        btnStatusHandler.getInstance().handleFavBooks(incomingBook, addToFav);
+                    }
                 }
+            } else {
+                try {
+                    Book incomingBook = new ObjectMapper().readValue(intent.getStringExtra("objBook"), Book.class);
+                    setData(incomingBook);
+                    addToFav.setVisibility(View.GONE);
+                    addToRead.setVisibility(View.GONE);
+                    addToReading.setVisibility(View.GONE);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
         }
 

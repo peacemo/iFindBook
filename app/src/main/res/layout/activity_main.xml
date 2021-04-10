@@ -74,7 +74,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/edtSearch"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -83,14 +83,11 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/shape_edt"
                 android:cursorVisible="true"
-                android:drawableEnd="@drawable/ic_search_24"
                 android:gravity="center_vertical"
-                android:hint="@string/search"
+                android:queryHint="@string/search"
                 android:lines="1"
-                android:paddingStart="25dp"
-                android:paddingEnd="25dp"
                 android:singleLine="true"
-                android:textColor="@color/primaryLightColor"
+                app:queryBackground="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

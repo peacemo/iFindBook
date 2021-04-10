@@ -31,15 +31,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="SEARCH"
-                android:src="@drawable/ic_search_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <ImageButton-->
+<!--                android:layout_width="48dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:contentDescription="SEARCH"-->
+<!--                android:src="@drawable/ic_search_24"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -63,14 +63,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imgCover"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imgCoverContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgCover"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    android:scaleType="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btnAddToRead"
@@ -79,7 +91,7 @@
                 android:layout_marginTop="24dp"
                 android:text="@string/mark_read"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgCover" />
+                app:layout_constraintTop_toBottomOf="@+id/imgCoverContainer" />
 
             <Button
                 android:id="@+id/btnAddToReading"
@@ -107,8 +119,8 @@
                 android:text="Name"
                 android:textStyle="bold"
                 android:textSize="24dp"
-                app:layout_constraintStart_toEndOf="@+id/imgCover"
-                app:layout_constraintTop_toTopOf="@+id/imgCover" />
+                app:layout_constraintStart_toEndOf="@+id/imgCoverContainer"
+                app:layout_constraintTop_toTopOf="@+id/imgCoverContainer" />
 
             <TextView
                 android:id="@+id/txtConAuthor"
@@ -118,14 +130,14 @@
                 android:layout_marginTop="32dp"
                 android:text="Author"
                 android:textSize="16dp"
-                app:layout_constraintStart_toEndOf="@+id/imgCover"
+                app:layout_constraintStart_toEndOf="@+id/imgCoverContainer"
                 app:layout_constraintTop_toBottomOf="@+id/txtConName" />
 
             <TextView
                 android:id="@+id/txtConDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginBottom="24dp"
                 android:text="Long Description"
                 app:layout_constraintBottom_toBottomOf="parent"

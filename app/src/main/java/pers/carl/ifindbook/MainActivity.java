@@ -9,21 +9,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static String activityName = "首页";
     private ImageView imgLogo;
     private TextView txtLicense;
     private WindowInsets windowHelper;
-    private EditText edtSearch;
+    private SearchView edtSearch;
     private Button btnGoSign;
-    private CardView btnAll, btnReading, btnRead, btnWishList, btnFav, btnAbout;
+    private CardView btnAll, btnReading, btnRead, btnFav;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -60,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AllBooksActivity.class);
-                intent.putExtra("pageName", MainActivity.activityName);
                 intent.putExtra("target", Constants.DEFAULT);
                 startActivity(intent);
             }
@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AllBooksActivity.class);
-                intent.putExtra("pageName", MainActivity.activityName);
                 intent.putExtra("target", Constants.READING);
                 startActivity(intent);
             }
@@ -80,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AllBooksActivity.class);
-                intent.putExtra("pageName", MainActivity.activityName);
                 intent.putExtra("target", Constants.READ);
                 startActivity(intent);
             }
@@ -90,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AllBooksActivity.class);
-                intent.putExtra("pageName", MainActivity.activityName);
                 intent.putExtra("target", Constants.FAV);
                 startActivity(intent);
             }
@@ -101,6 +98,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SignInActivity.class);
                 startActivityForResult(intent, 0);
+            }
+        });
+
+        edtSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AllBooksActivity.class);
+                intent.putExtra("target", Constants.SEARCH);
+                intent.putExtra("query", "%" + query + "%");
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
     }
