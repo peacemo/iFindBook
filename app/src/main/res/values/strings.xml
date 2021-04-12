@@ -17,7 +17,7 @@
     <string name="password">密码</string>
     <string name="email">邮箱</string>
     <string name="register">注册</string>
-    <string name="mark_read">标记已读</string>
-    <string name="mark_reading">加入在读</string>
-    <string name="mark_fav">加入最爱</string>
+    <string name="mark_read">已读</string>
+    <string name="mark_reading">在读</string>
+    <string name="mark_fav">最爱</string>
 </resources>

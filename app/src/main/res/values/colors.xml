@@ -16,4 +16,8 @@
     <color name="secondaryDarkColor">#3b4869</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#ffffff</color>
+
+
+<!--    surface color-->
+    <color name="cardSurface">#fff</color>
 </resources>

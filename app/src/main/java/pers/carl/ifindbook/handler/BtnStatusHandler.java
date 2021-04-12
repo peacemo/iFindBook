@@ -100,18 +100,40 @@ public class BtnStatusHandler {
         }
     }
 
-//    public static void handleReadBooks(Book book, Button btn) {
-//        if(book.getStatus() == Constants.READ) {
-//            btn.setEnabled(false);
-//        }else {
-//            btn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    DBUtils.getInstance().addToRead(book);
-//                    btn.setEnabled(false);
-//                }
-//            });
-//        }
-//    }
+    public static void handleReadBooks(Book incomingBook, Button addToRead) {
+        if(DBUtils.getInstance().getBooksRead().contains(incomingBook)) {
+            addToRead.setEnabled(false);
+        } else {
+            addToRead.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (DBUtils.getUser().getId() == 0) {
+                        Snackbar.make(addToRead, "请先登录哟~", Snackbar.LENGTH_SHORT)
+                                .show();
+                    }else if (DBUtils.getInstance().addToRead(incomingBook)) {
+                        BookStatusHandler bookStatusHandler = new BookStatusHandler(String.valueOf(DBUtils.getUser().getId()), String.valueOf(incomingBook.getId()), Constants.READ_BOOKS);
+                        FutureTask<String> addReadTask = new FutureTask<>(bookStatusHandler);
+                        Thread thread = new Thread(addReadTask);
+                        thread.start();
+                        try{
+                            //get获取线程返回值，通过ObjectMapper反序列化为ResponseBody
+                            ResponseBody body = mapper.readValue(addReadTask.get(),ResponseBody.class);
+
+                            if(body.getResponseCode() == 200) {
+                                Snackbar.make(addToRead, "添加成功", Snackbar.LENGTH_SHORT)
+                                        .show();
+                                addToRead.setEnabled(false);
+                            } else {
+                                Snackbar.make(addToRead, "添加失败，稍后重试", Snackbar.LENGTH_SHORT)
+                                        .show();
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
+        }
+    }
 
 }

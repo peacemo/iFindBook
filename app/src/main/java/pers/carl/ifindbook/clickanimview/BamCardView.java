@@ -54,7 +54,7 @@ public class BamCardView extends MaterialCardView {
      * 		即点击控件的任意部位，都只是缩放效果，与 华丽效果模式下 点击控件中间时的动画一样
      *
      **/
-    private boolean superb = true;
+    private boolean superb = false;
 
     /** 顶点判断【0：中间】【1：上】【2：右】【3：下】【4：左】 **/
     private int pivot = 0;

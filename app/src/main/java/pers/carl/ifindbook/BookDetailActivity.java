@@ -50,6 +50,7 @@ public class BookDetailActivity extends AppCompatActivity {
 //                    btnStatusHandler.getInstance().handleReadBooks(incomingBook, addToRead);
 
                         btnStatusHandler.getInstance().handleFavBooks(incomingBook, addToFav);
+                        btnStatusHandler.getInstance().handleReadBooks(incomingBook, addToRead);
                     }
                 }
             } else {

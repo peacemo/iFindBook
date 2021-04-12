@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.IFindBook" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/primaryLightColor</item>
@@ -14,6 +14,8 @@
         <!-- Customize your theme here. -->
         <item name="android:navigationBarColor" tools:targetApi="l">@android:color/transparent</item>
 
+<!--        <item name="background">@drawable/start_theme</item>-->
+
         <!-- Disable the ripple effect-->
         <item name="android:selectableItemBackground">@android:color/transparent</item>
         <item name="android:selectableItemBackgroundBorderless">@android:color/transparent</item>
@@ -22,5 +24,13 @@
     <style name="toolbarTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:textColorSecondary">@android:color/white</item>
     </style>
+
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:statusBarColor">@color/white</item>
+    <!-- Optional, on Android 5+ you can modify the colorPrimaryDark color to match the windowBackground color for further branding-->
+    <!-- <item name="colorPrimaryDark">@android:color/white</item> -->
+    </style>
+
 
 </resources>

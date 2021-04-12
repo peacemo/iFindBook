@@ -14,11 +14,13 @@ public class BookStatusHandler implements Callable<String> {
     private String uid;
     private String bid;
     private String url;
+    private String operation;
 
     public BookStatusHandler(String uid, String bid, String url) {
         this.uid = uid;
         this.bid = bid;
         this.url = url;
+        this.operation = "alter";
     }
 
     @Override
@@ -37,7 +39,7 @@ public class BookStatusHandler implements Callable<String> {
             //写数据（也就是发送数据）
             String data = "uid=" + URLEncoder.encode(this.uid, StandardCharsets.UTF_8.toString())
                     + "&bid=" + URLEncoder.encode(this.bid, StandardCharsets.UTF_8.toString())
-                    + "&type=" + URLEncoder.encode("alter", StandardCharsets.UTF_8.toString())
+                    + "&type=" + URLEncoder.encode(this.operation, StandardCharsets.UTF_8.toString())
                     ;
             connection.getOutputStream().write(data.getBytes(StandardCharsets.UTF_8));
             //TODO: 获取返回数据
@@ -53,7 +55,11 @@ public class BookStatusHandler implements Callable<String> {
                 byteArray.flush();
             }
             byte [] bytes = byteArray.toByteArray();
-
+            /**
+             * do not alter any of the code above (11 lines from here on),
+             * not sure if this actually works,
+             * but there's no bug and every thing works just fine with them..
+             */
             connection.disconnect();
             return new String(bytes,0,len,StandardCharsets.UTF_8);
 
@@ -67,8 +73,8 @@ public class BookStatusHandler implements Callable<String> {
     @Override
     public String toString() {
         return "BookStatusHandler{" +
-                "uid=" + uid +
-                ", bid=" + bid +
+                "uid='" + uid + '\'' +
+                ", bid='" + bid + '\'' +
                 ", url='" + url + '\'' +
                 '}';
     }

@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 
+import pers.carl.ifindbook.utils.DBUtils;
+
 public class MainActivity extends AppCompatActivity {
 
     private ImageView imgLogo;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);
         getWindow().getDecorView().setSystemUiVisibility(
                   View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -129,7 +132,12 @@ public class MainActivity extends AppCompatActivity {
 
         txtLicense = findViewById(R.id.txtLicense);
         txtLicense.setFitsSystemWindows(true);
+
         btnGoSign = findViewById(R.id.btnGoSign);
+//        if (DBUtils.getInstance().getUser().getId() != 0) {
+//            btnGoSign.setText("Hi, " + DBUtils.getUser().getNickname());
+//        }
+
         btnAll = findViewById(R.id.btnAll);
         btnReading = findViewById(R.id.btnReading);
         btnRead = findViewById(R.id.btnAlreadyRead);

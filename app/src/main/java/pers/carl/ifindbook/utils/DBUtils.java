@@ -63,10 +63,6 @@ public class DBUtils {
                 requestBooks(String.valueOf(user.getId()), "read", booksRead);
             }
         }
-
-        //these are the sample data.
-//        booksAll.add(new Book(11, "Book_I", "Isaka Kotaro", "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3539122593,1620052230&fm=26&gp=0.jpg", "short Desc", "long Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desc", false, Constants.DEFAULT));
-//        booksAll.add(new Book(101, "Book_X", "Isaka Kotaro", "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3780195714,2877537196&fm=26&gp=0.jpg", "short Desc", "long Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desclong Desc", false, Constants.DEFAULT));
     }
 
     /**
@@ -200,6 +196,7 @@ public class DBUtils {
     public static boolean addToReading(Book b) {
         try {
             booksReading.add(b);
+            booksRead.remove(b);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -207,15 +204,16 @@ public class DBUtils {
         }
     }
 
-//    public static boolean addToRead(Book b) {
-//        b.setStatus(Constants.READ);
-//        if(tagBooks()) {
-//            Log.v("log: ", "added to Read.");
-//            //TODO: update record to database
-//            return true;
-//        }
-//        return false;
-//    }
+    public static boolean addToRead(Book b) {
+        try {
+            booksRead.add(b);
+            booksReading.remove(b);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public static boolean addToFav(Book b) {
         try {
