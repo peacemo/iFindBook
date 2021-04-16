@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +25,8 @@ public class AllBooksActivity extends AppCompatActivity {
 
     private RecyclerView booksRecView;
     private Button btnBack;
+    private ConstraintLayout emptyStatus;
+    private TextView pageName;
 //    private ArrayList<Book> books = new ArrayList<>();
     private final ObjectMapper mapper = new ObjectMapper();
 
@@ -64,24 +68,26 @@ public class AllBooksActivity extends AppCompatActivity {
                         if (pageType != -1) {
                             switch (pageType) {
                                 case Constants.DEFAULT: {
-                                    ArrayList<Book> b = DBUtils.getInstance().getBooksAll();
-                                    Log.e("ALL", DBUtils.getUser().toString());
-                                    adapter.setBooks(b);
+                                    pageName.setText(R.string.all_books);
+                                    adapter.setBooks(DBUtils.getInstance().getBooksAll());
                                     break;
                                 }
                                 case Constants.READING: {
-                                    ArrayList<Book> b = DBUtils.getInstance().getBooksReading();
-                                    adapter.setBooks(b);
+                                    pageName.setText(R.string.reading);
+                                    adapter.setBooks(DBUtils.getInstance().getBooksReading());
                                     break;
                                 }
                                 case Constants.READ: {
+                                    pageName.setText(R.string.read);
                                     adapter.setBooks(DBUtils.getInstance().getBooksRead());
                                     break;
                                 }
                                 case Constants.FAV: {
+                                    pageName.setText(R.string.favorite);
                                     adapter.setBooks(DBUtils.getInstance().getBooksFav());
                                     break;
                                 }case Constants.SEARCH: {
+                                    pageName.setText(R.string.search);
                                     String query = intent.getStringExtra("query");
                                     adapter.setBooks(DBUtils.getInstance().searchBooks(query));
                                     break;
@@ -96,6 +102,9 @@ public class AllBooksActivity extends AppCompatActivity {
                             Toast.makeText(AllBooksActivity.this, "oops/.\\ some thing went wrong. ", Toast.LENGTH_SHORT).show();
                         }
 
+                        if (adapter.getItemCount() == 0) {
+                            emptyStatus.setVisibility(View.VISIBLE);
+                        }
                         booksRecView.setAdapter(adapter);
                         booksRecView.setLayoutManager(new LinearLayoutManager(AllBooksActivity.this));
                     }
@@ -147,6 +156,8 @@ public class AllBooksActivity extends AppCompatActivity {
 
         booksRecView = findViewById(R.id.allBooksRecView);
         btnBack = findViewById(R.id.btnBack);
+        emptyStatus = findViewById(R.id.emptyStatus);
+        pageName = findViewById(R.id.pageName);
 
     }
 

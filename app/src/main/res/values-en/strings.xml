@@ -8,11 +8,11 @@
     <string name="reading">Reading</string>
     <string name="favorite">Favorite</string>
     <string name="about">About</string>
-    <string name="search">Search...</string>
-    <string name="please_sign_in"><![CDATA[Please Sign In.  >]]></string>
+    <string name="search">Search</string>
+    <string name="please_sign_in">Please Sign In...</string>
     <string name="recommend">Recommend</string>
     <string name="sign_in">Sign In</string>
-    <string name="havent_sign_up">Haven\'t sign up？</string>
+    <string name="havent_sign_up">Haven\'t sign up？Join us</string>
     <string name="account">Account</string>
     <string name="nickname">Nickname</string>
     <string name="password">Password</string>
@@ -21,4 +21,6 @@
     <string name="mark_read">Read</string>
     <string name="mark_reading">Reading</string>
     <string name="mark_fav">Favorite</string>
+    <string name="user_reg">Register</string>
+    <string name="user_log">Log in</string>
 </resources>

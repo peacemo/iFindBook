@@ -63,6 +63,7 @@ public class DBUtils {
                 requestBooks(String.valueOf(user.getId()), "read", booksRead);
             }
         }
+        getBooksAll();
     }
 
     /**

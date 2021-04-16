@@ -22,7 +22,6 @@ import pers.carl.ifindbook.utils.DBUtils;
 public class MainActivity extends AppCompatActivity {
 
     private ImageView imgLogo;
-    private TextView txtLicense;
     private WindowInsets windowHelper;
     private SearchView edtSearch;
     private Button btnGoSign;
@@ -107,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
         edtSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, AllBooksActivity.class);
                 intent.putExtra("target", Constants.SEARCH);
                 intent.putExtra("query", "%" + query + "%");
@@ -127,16 +125,11 @@ public class MainActivity extends AppCompatActivity {
      *  Initialize the Views in the MainActivity
      */
     private void initView() {
-//        imgLogo = findViewById(R.id.imgLogo);
-//        imgLogo.setFitsSystemWindows(true);
-
-        txtLicense = findViewById(R.id.txtLicense);
-        txtLicense.setFitsSystemWindows(true);
 
         btnGoSign = findViewById(R.id.btnGoSign);
-//        if (DBUtils.getInstance().getUser().getId() != 0) {
-//            btnGoSign.setText("Hi, " + DBUtils.getUser().getNickname());
-//        }
+        if (DBUtils.getInstance().getUser().getId() != 0) {
+            btnGoSign.setText("Hi, " + DBUtils.getUser().getNickname());
+        }
 
         btnAll = findViewById(R.id.btnAll);
         btnReading = findViewById(R.id.btnReading);
