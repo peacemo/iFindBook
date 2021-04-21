@@ -16,7 +16,10 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import pers.carl.ifindbook.adapter.BooksRecViewAdapter;
 import pers.carl.ifindbook.utils.DBUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private SearchView edtSearch;
     private Button btnGoSign;
     private CardView btnAll, btnReading, btnRead, btnFav;
+    private RecyclerView recmdRecView;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -52,10 +56,16 @@ public class MainActivity extends AppCompatActivity {
         );
 
         initView();
-
         setOnclickListener();
+        handleRecmd();
 
+    }
 
+    private void handleRecmd() {
+        BooksRecViewAdapter adapter = new BooksRecViewAdapter(this);
+        adapter.setBooks(DBUtils.getInstance().getRecmdBook());
+        recmdRecView.setAdapter(adapter);
+        recmdRecView.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false));
     }
 
     private void setOnclickListener() {
@@ -138,5 +148,7 @@ public class MainActivity extends AppCompatActivity {
 //        btnAbout = findViewById(R.id.btnAbout);
 
         edtSearch = findViewById(R.id.edtSearch);
+
+        recmdRecView = findViewById(R.id.recmdRecView);
     }
 }

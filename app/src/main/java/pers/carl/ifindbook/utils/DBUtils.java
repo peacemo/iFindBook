@@ -25,6 +25,7 @@ public class DBUtils {
     private static ArrayList<Book> booksRead;
     private static ArrayList<Book> booksFav;
     private static ArrayList<Book> booksSearch;
+    private static ArrayList<Book> recmdBook;
 
     private final ObjectMapper mapper = new ObjectMapper();
 
@@ -40,8 +41,12 @@ public class DBUtils {
         }
         if (booksFav == null) {
             booksFav = new ArrayList<>();
-        }if (booksSearch == null) {
+        }
+        if (booksSearch == null) {
             booksSearch = new ArrayList<>();
+        }
+        if (recmdBook == null) {
+            recmdBook = new ArrayList<>();
         }
         if (user == null) {
             user = new User();
@@ -63,7 +68,7 @@ public class DBUtils {
                 requestBooks(String.valueOf(user.getId()), "read", booksRead);
             }
         }
-        getBooksAll();
+//        getBooksAll();
     }
 
     /**
@@ -105,6 +110,10 @@ public class DBUtils {
             }
             case "search": {
                 url = Constants.SEARCH_BOOKS;
+                break;
+            }
+            case "recmd": {
+                url = Constants.RECMD_BOOKS;
                 break;
             }
             default: {
@@ -156,6 +165,12 @@ public class DBUtils {
 
     public static ArrayList<Book> getBooksRead() {
         return booksRead;
+    }
+
+    public ArrayList<Book> getRecmdBook() {
+        recmdBook.clear();
+        requestBooks("recmd", "recmd", recmdBook);
+        return recmdBook;
     }
 
     public ArrayList<Book> getBooksFav() {
@@ -231,4 +246,5 @@ public class DBUtils {
         requestBooks(query, "search", booksSearch);
         return booksSearch;
     }
+
 }

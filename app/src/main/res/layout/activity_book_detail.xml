@@ -131,13 +131,15 @@
 
             <TextView
                 android:id="@+id/txtConName"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="Name"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/material_on_background_emphasis_high_type"
+                android:ellipsize="end"
+                android:singleLine="false"
                 app:layout_constraintStart_toEndOf="@+id/imgCoverContainer"
                 app:layout_constraintTop_toTopOf="@+id/imgCoverContainer" />
 

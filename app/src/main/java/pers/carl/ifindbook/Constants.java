@@ -25,4 +25,6 @@ public class Constants {
 //    public static final String READ_BOOKS = "http://ifindbook.cn.utools.club/books/read";
     public static final String SEARCH_BOOKS = "http://" + HOST + ":" + PORT + "/books/search";
 //    public static final String SEARCH_BOOKS = "http://ifindbook.cn.utools.club/books/search";
+    public static final String RECMD_BOOKS = "http://" + HOST + ":" + PORT + "/books/recmd";
+//    public static final String RECMD_BOOKS = "http://ifindbook.cn.utools.club/books/recmd";
 }
